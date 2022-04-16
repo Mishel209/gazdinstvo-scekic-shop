@@ -1,0 +1,1 @@
+# gazdinstvo-scekic-shop
