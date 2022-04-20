@@ -10,7 +10,7 @@ export class ProizvodService {
   constructor(private httpClient: HttpClient) { }
 
   getAllProizvodi(): Observable<any> {
-   return this.httpClient.get<any>("localhost:3000/proizvodi");
+   return this.httpClient.get<any>("http://localhost:3000/proizvodi");
   }
 }
 

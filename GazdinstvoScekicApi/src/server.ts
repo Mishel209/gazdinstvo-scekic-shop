@@ -7,7 +7,6 @@ import dbConfig from './common/db-config';
 // import routera 
 import proizvodRouter from './routing/proizvod-routing';
 
-
 const app: Application = express(); 
 app.use(express.json());
 
@@ -15,17 +14,9 @@ const corsOption: CorsOptions = {
   origin: '*',
   optionsSuccessStatus: 200
 };
-app.use(cors());
+app.use(cors(corsOption));
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-  next();
-});
- 
 app.use(proizvodRouter);
-
-
 
 createConnection(dbConfig)
   .then(connection => {

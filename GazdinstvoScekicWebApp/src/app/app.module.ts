@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HttpClient } from "@angular/common/http";
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SharedModule } from "./shared/shared.module";
 // import { AgmCoreModule } from '@agm/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,12 +25,15 @@ import * as $ from 'jquery';
 import { ProizvodComponent } from './proizvod/proizvod.component';
 import { PocetnaComponent } from './pocetna/pocetna.component';
 import { ProizvodService } from './shared/services/proizvod.service';
+import { SidebarService } from './shared/sidebar/sidebar.service';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProizvodComponent,
     PocetnaComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -41,13 +43,13 @@ import { ProizvodService } from './shared/services/proizvod.service';
     NgbModule,
     RouterModule,
     AppRoutingModule,
-    SharedModule,
     // AgmCoreModule.forRoot({apiKey: 'AIzaSyDKXKdHQdtqgPVl2HI2RnUa_1bjCxRCQo4'}),
     PerfectScrollbarModule
   ],
   providers: [
     { provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG },
-    ProizvodService
+    ProizvodService,
+    SidebarService
   ],
   bootstrap: [AppComponent]
 })
