@@ -5,7 +5,9 @@ const router: Router = Router();
 
 router.route('/proizvodi')
         .get(proizvodController.getAllProizvodi)
-        
+    
+router.route('/proizvodiSaTipom')
+        .get(proizvodController.getAllProizvodiSaTipom)
     
 router.route('/proizvodi/:pid')
         .get(proizvodController.getProizvodByID)

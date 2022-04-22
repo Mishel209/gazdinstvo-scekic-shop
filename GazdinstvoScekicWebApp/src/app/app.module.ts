@@ -27,6 +27,8 @@ import { PocetnaComponent } from './pocetna/pocetna.component';
 import { ProizvodService } from './shared/services/proizvod.service';
 import { SidebarService } from './shared/sidebar/sidebar.service';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+
 
 @NgModule({
   declarations: [
@@ -44,8 +46,14 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     RouterModule,
     AppRoutingModule,
     // AgmCoreModule.forRoot({apiKey: 'AIzaSyDKXKdHQdtqgPVl2HI2RnUa_1bjCxRCQo4'}),
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    FontAwesomeModule
   ],
+  
+  exports: [
+  FontAwesomeModule
+  ],
+  
   providers: [
     { provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG },
     ProizvodService,

@@ -12,6 +12,15 @@ const getAllProizvodi = async (request: Request, response:Response) => {
             response.status(500).send(err);
         })
 }
+const getAllProizvodiSaTipom = async (request: Request, response:Response) => {
+    proizvodRepository.getAllProizvodiSaTipom()
+        .then(data => {
+            response.send(data);
+        })
+        .catch(err => {
+            response.status(500).send(err);
+        })
+}
 
 const getProizvodByID = async (request: Request, response: Response) => {
     proizvodRepository.getProizvodByID(parseInt(request.params.pid))
@@ -23,4 +32,4 @@ const getProizvodByID = async (request: Request, response: Response) => {
         })
 }
 
-export default { getAllProizvodi, getProizvodByID }
+export default { getAllProizvodi, getProizvodByID, getAllProizvodiSaTipom }

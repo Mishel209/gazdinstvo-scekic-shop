@@ -12,5 +12,10 @@ export class ProizvodService {
   getAllProizvodi(): Observable<any> {
    return this.httpClient.get<any>("http://localhost:3000/proizvodi");
   }
+
+  getAllProizvodiSaTipom(): Observable<any> {
+    return this.httpClient.get<any>("http://localhost:3000/proizvodiSaTipom");
+   }
+
 }
 

@@ -1,4 +1,32 @@
-<p>proizvod works!</p>
-<div> 
-    {{ proizvodi | json }}
+
+<div class="row">
+    <div class="col-xl-9 mx-auto">
+
+        <h6 class="mb-0 text-uppercase">Lista proizvoda</h6>
+        <hr/>
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-bordered mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Naziv</th>
+                            <th scope="col">Opis</th>
+                            <th scope="col">Tip</th>
+                            <th scope="col">Izmijeni</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let proizvod of proizvodi;">
+                            <th scope="row"> {{ proizvod.id }} </th>
+                            <td>{{ proizvod.naziv }}</td>
+                            <td>{{ proizvod.opis }}</td>
+                            <td>{{ proizvod.nazivTipaProizvoda }}</td>
+                            <td><button class="btn"><fa-icon [icon]="faTimes" class="fa-lg" ></fa-icon></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
