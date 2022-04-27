@@ -27,7 +27,8 @@ import { PocetnaComponent } from './pocetna/pocetna.component';
 import { ProizvodService } from './shared/services/proizvod.service';
 import { SidebarService } from './shared/sidebar/sidebar.service';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EditProizvodComponent } from './edit-proizvod/edit-proizvod.component'
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
     AppComponent,
     ProizvodComponent,
     PocetnaComponent,
-    SidebarComponent
+    SidebarComponent,
+    EditProizvodComponent
   ],
   imports: [
     BrowserModule,

@@ -22,11 +22,11 @@
                             <td>{{ proizvod.naziv }}</td>
                             <td>{{ proizvod.opis }}</td>
                             <td>{{ proizvod.nazivTipaProizvoda }}</td>
-                            <td><button class="btn"><fa-icon [icon]="faTimes" class="fa-lg" ></fa-icon></button></td>
+                            <td><button class="btn" (click)="openEditProizvodModal(proizvod.id)"><fa-icon [icon]="faTimes" class="fa-lg" ></fa-icon></button></td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> 
         </div>
     </div>
 </div>
