@@ -256,9 +256,9 @@ DROP TABLE IF EXISTS `tip_proizvoda`;
 CREATE TABLE `tip_proizvoda` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `naziv` varchar(50) DEFAULT NULL,
+  `nad_tip` varchar(45) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tip_proizvoda`
