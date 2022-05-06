@@ -32,4 +32,15 @@ const getProizvodByID = async (request: Request, response: Response) => {
         })
 }
 
-export default { getAllProizvodi, getProizvodByID, getAllProizvodiSaTipom }
+const getProizvodiSaZalihama = async (request: Request, response:Response) => {
+    proizvodRepository.getProizvodiSaZalihama()
+        .then(data => {
+            response.send(data);
+        })
+        .catch(err => {
+            response.status(500).send(err);
+        })
+        
+    }    
+
+export default { getAllProizvodi, getProizvodByID, getAllProizvodiSaTipom, getProizvodiSaZalihama }

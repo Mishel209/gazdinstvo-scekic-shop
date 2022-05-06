@@ -1,3 +1,4 @@
+
 CREATE DATABASE  IF NOT EXISTS `gazdinstvo_scekic` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `gazdinstvo_scekic`;
 -- MySQL dump 10.13  Distrib 8.0.26, for Win64 (x86_64)
@@ -35,7 +36,7 @@ CREATE TABLE `cjenovnik` (
   PRIMARY KEY (`id`),
   KEY `proizvod_id_cjenovnik_idx` (`proizvod_id`),
   KEY `velicina_id_cjenovnik_idx` (`velicina_id`),
-  CONSTRAINT `proizvod_id_cjenovnik` FOREIGN KEY (`proizvod_id`) REFERENCES `gazdinstvo_šćekić`.`proizvod` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `proizvod_id_cjenovnik` FOREIGN KEY (`proizvod_id`) REFERENCES `gazdinstvo_scekic`.`proizvod` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `velicina_id_cjenovnik` FOREIGN KEY (`velicina_id`) REFERENCES `velicina` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -116,7 +117,7 @@ CREATE TABLE `korpa` (
   KEY `kupac_id_korpa_idx` (`kupac_id`),
   KEY `tip_statusa_korpe_id_korpa_idx` (`tip_statusa_korpe_id`),
   CONSTRAINT `kupac_id_korpa` FOREIGN KEY (`kupac_id`) REFERENCES `kupac` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `tip_statusa_korpe_id_korpa` FOREIGN KEY (`tip_statusa_korpe_id`) REFERENCES `gazdinstvo_šćekić`.`tip_statusa_korpe` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `tip_statusa_korpe_id_korpa` FOREIGN KEY (`tip_statusa_korpe_id`) REFERENCES `gazdinstvo_scekic`.`tip_statusa_korpe` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -232,7 +233,7 @@ CREATE TABLE `slika` (
   PRIMARY KEY (`id`),
   KEY `tip_slike_id_slika_idx` (`tip_slike_id`),
   KEY `proizvod_id_slika_idx` (`proizvod_id`),
-  CONSTRAINT `proizvod_id_slika` FOREIGN KEY (`proizvod_id`) REFERENCES `gazdinstvo_šćekić`.`proizvod` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `proizvod_id_slika` FOREIGN KEY (`proizvod_id`) REFERENCES `gazdinstvo_scekic`.`proizvod` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tip_slike_id_slika` FOREIGN KEY (`tip_slike_id`) REFERENCES `tip_slike` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -403,4 +404,3 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-06 20:40:06
