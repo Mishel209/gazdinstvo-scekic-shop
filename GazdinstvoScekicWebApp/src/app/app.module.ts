@@ -29,6 +29,7 @@ import { SidebarService } from './shared/sidebar/sidebar.service';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EditProizvodComponent } from './edit-proizvod/edit-proizvod.component'
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { EditProizvodComponent } from './edit-proizvod/edit-proizvod.component'
     AppRoutingModule,
     // AgmCoreModule.forRoot({apiKey: 'AIzaSyDKXKdHQdtqgPVl2HI2RnUa_1bjCxRCQo4'}),
     PerfectScrollbarModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
   
   exports: [

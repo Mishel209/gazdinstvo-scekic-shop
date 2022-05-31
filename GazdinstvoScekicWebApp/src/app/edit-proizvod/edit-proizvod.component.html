@@ -1,9 +1,57 @@
  <div class="modal-header">
-    <h4 class="modal-title">Hi there!</h4>
+    <h4 class="modal-title">Izmijeni proizvod</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
-    <p>Id izabranog proizvoda: {{ proizvodId }}</p>
+  
+    
+<div class="row">
+  <div class="col-xl-9 mx-auto">
+
+      <hr/>
+      <div class="card">
+          <div class="card-body">
+              <table class="table table-bordered mb-0">
+                  <thead>
+                      <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Naziv</th>
+                          <th scope="col">Tip</th>                       
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <th scope="row"> {{ proizvodSaZalihama.proizvod_id }} </th>
+                          <td>
+                            <input type="text" id="proizvod_id" [(ngModel)]="proizvodSaZalihama.naziv" />
+                          </td>
+                          <td>{{ proizvodSaZalihama.naziv_tipa_proizvoda }}</td>                         
+                      </tr>
+                  </tbody>
+              </table>
+          </div> 
+          
+          <div class="card-body">
+            <table class="table table-bordered mb-0">
+                <thead>
+                    <tr>
+                        
+                        <th scope="col">Naziv vcelicine</th>
+                        <th scope="col">Kolicina</th>                       
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let zaliha of proizvodSaZalihama.zalihe">
+                        <td>{{ zaliha.naziv_velicine }}</td>
+                       <td>{{ zaliha.kolicina_zalihe }}</td>                         
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
+      </div>
+  </div>
+</div>
+
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>

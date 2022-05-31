@@ -21,7 +21,7 @@ export class ProizvodComponent implements OnInit {
   
   ngOnInit(): void {
     this.proizvodService.getAllProizvodiSaTipom().subscribe(res=>{
-      console.log (res);
+      console.log ("ProizvodComponent - Proizvodi: " + JSON.stringify(res));
       this.proizvodi = res;
     });
   }

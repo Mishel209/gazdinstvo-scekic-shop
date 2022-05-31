@@ -33,14 +33,14 @@ const getProizvodByID = async (request: Request, response: Response) => {
 }
 
 const getProizvodiSaZalihama = async (request: Request, response:Response) => {
-    proizvodRepository.getProizvodiSaZalihama()
+   await proizvodRepository.getProizvodiSaZalihama(parseInt(request.params.pid))
         .then(data => {
             response.send(data);
         })
         .catch(err => {
             response.status(500).send(err);
-        })
-        
-    }    
+        }) 
+}
 
+    
 export default { getAllProizvodi, getProizvodByID, getAllProizvodiSaTipom, getProizvodiSaZalihama }

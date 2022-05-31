@@ -12,8 +12,7 @@ router.route('/proizvodiSaTipom')
 router.route('/proizvodi/:pid')
         .get(proizvodController.getProizvodByID)
 
-router.route('/proizvodiSaZalihama')
-        .get(proizvodController.getProizvodiSaZalihama)
-        
+ router.route('/proizvodiSaZalihama/:pid')
+        .get(proizvodController.getProizvodiSaZalihama) 
 
 export default router;
