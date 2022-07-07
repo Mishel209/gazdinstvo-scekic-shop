@@ -12,6 +12,10 @@ export class EditProizvodComponent implements OnInit {
 
   @Input() proizvodId; 
   proizvodSaZalihama: ProizvodSaZalihom;
+  proizvodiSaTipom : any;
+  listaTipovaProizvoda: any;
+  listaVelicine: any;
+  showUpdateLoader: boolean = false;
 
   constructor(
      public activeModal: NgbActiveModal,
@@ -20,19 +24,54 @@ export class EditProizvodComponent implements OnInit {
 
   ngOnInit(): void {  
      console.log ("EditProizvodComponent - proslijedjeni id: " + this.proizvodId)
+     
      this.proizvodService.getProizvodSaZalihama(this.proizvodId).subscribe(res=>{
       console.log ("EditProizvodComponent - Proizvod sa zalihama: " + JSON.stringify(res));
       this.proizvodSaZalihama = res;
     })
+
+    this.proizvodService.getAllProizvodiSaTipom().subscribe(res=>{
+      console.log ("EditProizvodComponent - Proizvod: " + JSON.stringify(res));
+      
+    })
+    
+    this.proizvodService.getlistaTipovaProizvoda().subscribe(res=>{
+      console.log ("EditProizvodComponent - lista Tipova proizvoda: " + JSON.stringify(res) )
+      
+      
+      // NAPOMENA1: listaTipovaProizvoda je promjenjiva koju moras da stavis u ngfor
+      // u select box za tip prozvoda
+      // to treba da izgleda ovako:
+      /*
+       <option *ngFor="tipProizvoda of listaTipovaProizvoda [value]='tipProizvoda.id'>
+        {{ tipProizvod.naziv }}
+       </option>
+      
+       Bukvalno iskopiras ovo iznad tamo dje sam ti naveo
+      "*/
+      this.listaTipovaProizvoda = res
+    }) 
+
+    this.proizvodService.getlistaVelicine().subscribe(res=>{
+      console.log ("EditProizvodComponent - lista Velicina: " + JSON.stringify(res) )
+      this.listaVelicine = res
+    })
+
   }
 
-
-
-}
-
-
-
-
-
-
-
+  sacuvajIzmjene() {
+    // TU POKRECES LOADER
+    this.showUpdateLoader = true;
+    this.proizvodService.putIzmjeneProizvoda(this.proizvodSaZalihama).subscribe(result =>{
+      console.log ("EditProizvodComponent - izmjena proizvoda: " + JSON.stringify(result) )
+      // TU ZAUSTAVLJAS LOADER
+      this.showUpdateLoader = false;
+      alert("Uspjesno ste izmijenili proizvod")
+    },
+    error => {
+      alert(JSON.stringify(error.message));
+      console.log(error);
+      // TU TAKODJES ZAUSTAVLJAS LOADER
+    })
+  }
+  }

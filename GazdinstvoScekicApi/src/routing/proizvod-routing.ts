@@ -15,4 +15,17 @@ router.route('/proizvodi/:pid')
  router.route('/proizvodiSaZalihama/:pid')
         .get(proizvodController.getProizvodiSaZalihama) 
 
+ router.route('/listatipovaProizvoda')   
+        .get(proizvodController.getlistaTipovaProizvoda)
+
+ router.route('/listaVelicine')   
+        .get(proizvodController.getlistaVelicine)
+
+router.route('/sacuvajPromjene')
+        .put(proizvodController.putIzmjeneProizvoda)
+
+router.route('/addProduct')
+        .post(proizvodController.postAddProduct)
+
+
 export default router;

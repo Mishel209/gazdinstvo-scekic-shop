@@ -9,12 +9,13 @@
                 <table class="table table-bordered mb-0">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">R.Broj</th>
                             <th scope="col">Naziv</th>
                             <th scope="col">Opis</th>
                             <th scope="col">Tip</th>
                             <th scope="col">Izmijeni</th>
                             <th scope="col">Cijena</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
@@ -24,6 +25,8 @@
                             <td>{{ proizvod.opis }}</td>
                             <td>{{ proizvod.nazivTipaProizvoda }}</td>
                             <td><button class="btn" (click)="openEditProizvodModal(proizvod.id)"><fa-icon [icon]="faTimes" class="fa-lg" ></fa-icon></button></td>
+                            <td>{{ proizvod.cijena }}</td>
+                            
                         </tr>
                     </tbody>
                 </table>

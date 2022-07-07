@@ -1,58 +1,81 @@
- <div class="modal-header">
+<div class="modal-header">
     <h4 class="modal-title">Izmijeni proizvod</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
-  </div>
-  <div class="modal-body">
-  
-    
-<div class="row">
-  <div class="col-xl-9 mx-auto">
-
-      <hr/>
-      <div class="card">
-          <div class="card-body">
-              <table class="table table-bordered mb-0">
-                  <thead>
-                      <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Naziv</th>
-                          <th scope="col">Tip</th>                       
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <th scope="row"> {{ proizvodSaZalihama.proizvod_id }} </th>
-                          <td>
-                            <input type="text" id="proizvod_id" [(ngModel)]="proizvodSaZalihama.naziv" />
-                          </td>
-                          <td>{{ proizvodSaZalihama.naziv_tipa_proizvoda }}</td>                         
-                      </tr>
-                  </tbody>
-              </table>
-          </div> 
-          
-          <div class="card-body">
-            <table class="table table-bordered mb-0">
-                <thead>
-                    <tr>
-                        
-                        <th scope="col">Naziv vcelicine</th>
-                        <th scope="col">Kolicina</th>                       
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let zaliha of proizvodSaZalihama.zalihe">
-                        <td>{{ zaliha.naziv_velicine }}</td>
-                       <td>{{ zaliha.kolicina_zalihe }}</td>                         
-                    </tr>
-                </tbody>
-            </table>
-        </div> 
-      </div>
-  </div>
 </div>
+<div class="modal-body position-relative">
 
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
-  </div> 
+
+    <div class="row">
+        <div class="col-xl-9 mx-auto">
+
+            <hr />
+            <div class="card">
+                <div class="card-body" *ngIf="proizvodSaZalihama">
+                    <table class="table table-bordered mb-0">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Naziv</th>
+                                <th scope="col">Opis</th>
+                                <th scope="col">Tip</th>
+                            </tr>
+                            <tr>
+                                <td>{{proizvodSaZalihama.proizvod_id}}</td>
+                                <td><input type="text" [(ngModel)]="proizvodSaZalihama.naziv" /></td>
+                                <td><input type="text" [(ngModel)]="proizvodSaZalihama.opis" /></td>
+                               <td>
+
+                                    <select [(ngModel)]="proizvodSaZalihama.tip_proizvoda_id">
+                                        <option value="0">Izaberi proizvod:</option>
+                                        <!-- NAPOMENA2 Ispod stavi option sa ngFor-om box -->
+                                        <option *ngFor="let tipProizvoda of listaTipovaProizvoda"
+                                            [value]='tipProizvoda.id'>
+                                            {{ tipProizvoda.naziv }}
+                                        </option>
+                                    </select>
+                                </td> 
+                            </tr>
+
+                        </thead>
+
+                    </table>
+                </div>
+            </div>
+
+
+
+            <div class="card-body" *ngIf="proizvodSaZalihama">
+                <table class="table table-bordered mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Naziv velicine</th>
+                            <th scope="col">Kolicina</th>
+                            <th scope="col">Cijena</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let zaliha of proizvodSaZalihama.zalihe">
+                            <td>{{ zaliha.naziv_velicine }}</td>
+                            <td><input type="number" [(ngModel)]="zaliha.kolicina_zalihe" /></td>
+                            <td><input type="number" [(ngModel)]="zaliha.cijena" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="activeModal.close('Close click')">Close</button>
+
+        <button type="button" [disabled]="showUpdateLoader == true" class="btn btn-success"
+            (click)="sacuvajIzmjene()">Sacuvaj promjene</button>
+
+    </div>
+
+    <div *ngIf="showUpdateLoader == true" class="spinner-border text-primary big-spinner" role="status"> <span
+            class="visually-hidden">Loading...</span>
+    </div>
+
+</div>

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
+import { AddProductComponent } from './add-product/add-product.component';
 import { PocetnaComponent } from './pocetna/pocetna.component';
+import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { ProizvodComponent } from './proizvod/proizvod.component';
 
@@ -14,11 +16,15 @@ const routes: Routes = [
   },
   { path: '', component: PocetnaComponent },
   { path: 'pocetna', component: PocetnaComponent },
-  { path: 'proizvodi', component: ProizvodComponent }
+  { path: 'proizvodi', component: ProizvodComponent },
+  { path: 'dodajProizvod', component: AddProductComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})],
+  imports: [
+    RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules}) 
+  ],
+  providers: [NgbActiveModal],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

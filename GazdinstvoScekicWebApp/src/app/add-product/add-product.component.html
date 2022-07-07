@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col-xl-9 mx-auto">
+
+        <h6 class="mb-0 text-uppercase">Dodaj novi proizvod</h6>
+        <hr/>
+        <div class="card">
+            <div class="card-body">
+
+                <table class="table table-bordered mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Naziv</th>
+                            <th scope="col">Opis</th>
+                            <th scope="col">Tip</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" [(ngModel)]="proizvodSaZalihama.naziv" /></td>
+                            <td><input type="text" [(ngModel)]="proizvodSaZalihama.opis" /></td>
+                            
+                            <select [(ngModel)]="proizvodSaZalihama.tip_proizvoda_id">
+                                <option value="0">Izaberi proizvod:</option>
+                                <!-- NAPOMENA2 Ispod stavi option sa ngFor-om box -->
+                                <option *ngFor="let tipProizvoda of listaTipovaProizvoda"
+                                    [value]='tipProizvoda.id'>
+                                    {{ tipProizvoda.naziv }}
+                                </option>
+                            </select>
+                        </tr>
+                    </tbody>
+                                
+				
+                </table>
+            
+                <div class="card-body">
+                    <table class="table table-bordered mb-0">
+                        <thead>
+                            <tr>
+                                <th scope="col">Naziv velicine</th>
+                                <th scope="col">Kolicina</th>
+                                <th scope="col">Unesi cijenu</th>
+                                <th scope="col">Ukloni</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let zaliha of proizvodSaZalihama.zalihe; let $index  = index">
+                                <td>
+                                    <select [(ngModel)]="zaliha.velicina_id">
+                                        <option value="0">Izaberi velicinu:</option>
+                                        <!-- NAPOMENA2 Ispod stavi option sa ngFor-om box -->
+                                        <option *ngFor="let velicina of listaVelicine"
+                                            [value]='velicina.id'>
+                                            {{ velicina.naziv }}
+                                        </option>
+                                    </select>  
+                                </td>
+                                <td>
+                                    <input type="number" [(ngModel)]="zaliha.kolicina_zalihe" />
+                                </td>
+
+                                <td>
+                                    <input type="number" [(ngModel)]="zaliha.cjenovnik_zalihe"/>
+                                </td>
+
+                                <td>
+                                    <button class="btn btn-danger" (click)="ukloniZalihu($index)">X</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <div class="row text-center card-body ">
+                                        <div class="col-12">
+                                            <button type="button" [disabled]="showUpdateLoader == true" class="btn btn-primary custom-btn"
+                                            (click)="dodajZalihu()">Dodaj zalihu
+                                            </button>
+                                            </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+            </div> 
+            <div class="row text-center">
+                <div class="col-12">
+                    <button type="button" [disabled]="showUpdateLoader == true" class="btn btn-primary custom-btn"
+                    (click)="sacuvajIzmjene()">Sacuvaj promjene
+                    </button>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

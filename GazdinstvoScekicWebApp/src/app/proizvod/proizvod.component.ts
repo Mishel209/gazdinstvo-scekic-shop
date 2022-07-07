@@ -24,11 +24,15 @@ export class ProizvodComponent implements OnInit {
       console.log ("ProizvodComponent - Proizvodi: " + JSON.stringify(res));
       this.proizvodi = res;
     });
-  }
+
+  };
   
   openEditProizvodModal(proizvodId:number){
     const modalRef = this.modalService.open(EditProizvodComponent, {size: 'lg'}); 
     modalRef.componentInstance.proizvodId = proizvodId ;
   };
 
+
+  
+    
 }

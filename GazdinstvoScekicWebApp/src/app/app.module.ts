@@ -30,6 +30,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EditProizvodComponent } from './edit-proizvod/edit-proizvod.component'
 import { FormsModule } from '@angular/forms';
+import { AddProductComponent } from './add-product/add-product.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { FormsModule } from '@angular/forms';
     ProizvodComponent,
     PocetnaComponent,
     SidebarComponent,
-    EditProizvodComponent
+    EditProizvodComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,

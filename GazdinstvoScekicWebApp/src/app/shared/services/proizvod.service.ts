@@ -3,10 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { ProizvodSaZalihom } from 'src/app/models/proizvod-sa-zalihom.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProizvodService {
+  
+ 
   
   constructor(private httpClient: HttpClient) { }
 
@@ -25,11 +28,26 @@ export class ProizvodService {
     return this.httpClient.get<ProizvodSaZalihom>(`http://localhost:3000/proizvodiSaZalihama/${pid}`);
    }
 
-   getProizvodById(): Observable<any> {
-    return this.httpClient.get<any>("http://localhost:3000/proizvodiSaTipom");
+   getProizvodById(): Observable<any[]> {
+    return this.httpClient.get<any[]>("http://localhost:3000/proizvodiSaTipom");
+
+}
+getlistaTipovaProizvoda(): Observable<any[]> {
+  return this.httpClient.get<any[]>("http://localhost:3000/listaTipovaProizvoda");
 
 }
 
+getlistaVelicine(): Observable<any[]> {
+  return this.httpClient.get<any[]>("http://localhost:3000/listaVelicine");
 }
 
+putIzmjeneProizvoda(body : ProizvodSaZalihom):  Observable<any[]> {
+  return this.httpClient.put<any[]>("http://localhost:3000/sacuvajPromjene",body);
+}
+
+postAddProduct(body : ProizvodSaZalihom):  Observable<any[]> {
+  return this.httpClient.post<any[]>("http://localhost:3000/addProduct",body);
+}
+
+}
 
