@@ -32,10 +32,9 @@ function getlistaVelicine(pid: number) {
 async function postAddProduct(proizvod: ProizvodSaZalihom) {
     console.log(proizvod);
     let insertProizvodResult = await getManager().query(`INSERT INTO proizvod 
-    ( naziv, opis, tip_proizvoda_id, cijena)
+    ( naziv, opis, tip_proizvoda_id)
     VALUES  ("${proizvod.naziv}",
             "${proizvod.opis}",
-            "${proizvod.cijena}",
             "${proizvod.tip_proizvoda_id}")`)
      
      proizvod.zalihe.forEach(async (zaliha) => {
@@ -54,8 +53,8 @@ async function postAddProduct(proizvod: ProizvodSaZalihom) {
             "${cjenovnik.datum_do}",
             "${cjenovnik.cijena}",
             "${cjenovnik.popust}",
-            "${cjenovnik.velicina_id},
-            "${cjenovnik.proizvod_id}")`);
+            "${cjenovnik.velicina_id}",
+            "${insertProizvodResult["insertId"]}")`);
     });
     return true;
 }

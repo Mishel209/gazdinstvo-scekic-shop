@@ -17,6 +17,7 @@ export class AddProductComponent implements OnInit {
   listaTipovaProizvoda: any = [];
   listaVelicine: any;
   showUpdateLoader: boolean = false;
+  postAddProduct: any[];
 
 
   constructor(
@@ -31,6 +32,7 @@ export class AddProductComponent implements OnInit {
     this.proizvodService.getlistaVelicine().subscribe(res=>{
       this.listaVelicine = res;
     }) 
+
 
    
 

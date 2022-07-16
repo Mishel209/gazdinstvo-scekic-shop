@@ -57,7 +57,7 @@ import { AddProductComponent } from './add-product/add-product.component';
   ],
   
   exports: [
-  FontAwesomeModule
+    FontAwesomeModule
   ],
   
   providers: [
