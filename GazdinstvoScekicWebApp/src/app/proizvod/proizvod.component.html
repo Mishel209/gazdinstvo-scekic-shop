@@ -13,8 +13,10 @@
                             <th scope="col">Naziv</th>
                             <th scope="col">Opis</th>
                             <th scope="col">Tip</th>
-                            <th scope="col">Izmijeni</th>
                             <th scope="col">Cijena</th>
+                            <th scope="col">Slika</th>
+                            <th scope="col">Izmijeni</th>
+                            <th scope="col">Ukloni</th>
                            
                         </tr>
                     </thead>
@@ -24,9 +26,16 @@
                             <td>{{ proizvod.naziv }}</td>
                             <td>{{ proizvod.opis }}</td>
                             <td>{{ proizvod.nazivTipaProizvoda }}</td>
-                            <td><button class="btn" (click)="openEditProizvodModal(proizvod.id)"><fa-icon [icon]="faTimes" class="fa-lg" ></fa-icon></button></td>
-                            <td>{{ proizvod.cijena }}</td>
-                            
+                            <td>&euro;{{ proizvod.cijena }}</td>
+                            <td> 
+                                <img src="{{apiImgUploadUrl}}/{{proizvod.slikaNaziv}}" alt=""  class = "img-fluid">
+                            </td>
+                            <td>
+                                <button class="btn" (click)="openEditProizvodModal(proizvod.id)"><fa-icon [icon]="faTimes" class="fa-lg" ></fa-icon></button>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" (click)="deleteProizvod(proizvod.id)">X</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

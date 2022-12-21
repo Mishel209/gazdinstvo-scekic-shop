@@ -5,6 +5,7 @@ export class Cjenovnik{
     popust : number;
     proizvod_id : number;
     velicina_id : number;
+   
 
     constructor(){
         this.datum_od = 0;
@@ -13,5 +14,6 @@ export class Cjenovnik{
         this.popust = 0;
         this.proizvod_id = 0;
         this.velicina_id = 0;
+   
     }
 }

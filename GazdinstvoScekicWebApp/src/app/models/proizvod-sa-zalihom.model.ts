@@ -7,6 +7,7 @@ export class ProizvodSaZalihom {
     tip_proizvoda_id : number;
     naziv_tipa_proizvoda : string;
     cijena : number;
+    slikaNaziv: string;
     zalihe : Zalihe[];
     
     constructor() {
@@ -16,6 +17,7 @@ export class ProizvodSaZalihom {
         this.tip_proizvoda_id = 0;
         this.naziv_tipa_proizvoda = "";
         this.cijena = 0;
+        this.slikaNaziv = "";
         this.zalihe = new Array<Zalihe>();
     }
 }

@@ -8,6 +8,7 @@ export class Zalihe {
     cijena : number;
     popust : number;
     proizvod_id : number;
+    
    
        constructor(){
         this.zaliha_id = 0;
@@ -19,6 +20,7 @@ export class Zalihe {
          this.cijena = 0;
          this.popust = 0;
          this.proizvod_id = 0;
+       
          
     }
 }

@@ -9,13 +9,17 @@ import { ProizvodService } from '../shared/services/proizvod.service';
   styleUrls: ['./edit-proizvod.component.scss']
 })
 export class EditProizvodComponent implements OnInit {
+sacuvajPromjene: any;
+ 
 
   @Input() proizvodId; 
-  proizvodSaZalihama: ProizvodSaZalihom;
+  proizvodSaZalihama: ProizvodSaZalihom = new ProizvodSaZalihom();
   proizvodiSaTipom : any;
   listaTipovaProizvoda: any;
   listaVelicine: any;
   showUpdateLoader: boolean = false;
+  uploadImage: any;
+  putEditProizvod: any[];
 
   constructor(
      public activeModal: NgbActiveModal,
@@ -55,23 +59,42 @@ export class EditProizvodComponent implements OnInit {
     this.proizvodService.getlistaVelicine().subscribe(res=>{
       console.log ("EditProizvodComponent - lista Velicina: " + JSON.stringify(res) )
       this.listaVelicine = res
-    })
-
+    });
   }
-
   sacuvajIzmjene() {
-    // TU POKRECES LOADER
-    this.showUpdateLoader = true;
-    this.proizvodService.putIzmjeneProizvoda(this.proizvodSaZalihama).subscribe(result =>{
-      console.log ("EditProizvodComponent - izmjena proizvoda: " + JSON.stringify(result) )
-      // TU ZAUSTAVLJAS LOADER
-      this.showUpdateLoader = false;
-      alert("Uspjesno ste izmijenili proizvod")
-    },
-    error => {
-      alert(JSON.stringify(error.message));
-      console.log(error);
-      // TU TAKODJES ZAUSTAVLJAS LOADER
-    })
+      
+      // TU POKRECES LOADER
+      this.showUpdateLoader = true;
+      this.proizvodService.putIzmjeneProizvoda(this.proizvodSaZalihama).subscribe(result =>{
+        console.log ("EditProizvodComponent - izmjena proizvoda: " + JSON.stringify(result) )
+        
+        // TU ZAUSTAVLJAS LOADER
+        this.showUpdateLoader = false;
+        alert("Uspjesno ste izmijenili proizvod")
+      },
+      function (error) {
+          alert(JSON.stringify(error.message));
+          console.log(error);
+          // TU TAKODJES ZAUSTAVLJAS LOADER
+        });
+
+        
+  };
+
+  processFile(imageInput : any) {
+  
+    const file:File = imageInput.target.files[0];
+  
+      this.proizvodService.uploadImage(file).subscribe(
+        (res) => {
+          console.log("Fajl uspjesno uploadovan");
+          this.proizvodSaZalihama.slikaNaziv = file.name;
+          console.log(res);
+        },
+         (err) => {
+          console.log("Fajl neuspjesno uploadovan");
+          console.log(err);
+         });
+  
   }
-  }
+}

@@ -42,6 +42,8 @@ const getProizvodiSaZalihama = async (request: Request, response:Response) => {
             response.status(500).send(err);
         }) 
 }
+
+
 const getlistaTipovaProizvoda = async (request: Request, response:Response) => {
     await proizvodRepository.getlistaTipovaProizvoda()
          .then(data => {
@@ -61,16 +63,16 @@ const getlistaTipovaProizvoda = async (request: Request, response:Response) => {
              response.status(500).send(err);
          }) 
  }
- const putIzmjeneProizvoda = async (request: Request, response:Response) => {
+ async function putIzmjeneProizvoda(request: Request, response: Response) {
     await proizvodRepository.putIzmjeneProizvoda(request.body)
-         .then(data => {
-             response.send(data);
-         })
-         .catch(err => {
-             response.status(500).send(err);
-         }) 
- 
-        }
+        .then(data => {
+            response.send(data);
+        })
+        .catch(err => {
+            response.status(500).send(err);
+        });
+
+}
         
 const postAddProduct = async (request: Request, response:Response) => {
     await proizvodRepository.postAddProduct(request.body)
@@ -80,7 +82,53 @@ const postAddProduct = async (request: Request, response:Response) => {
          .catch(err => {
              response.status(500).send(err);
          })
+        }
+
+const getPorudzbine = async (request: Request, response:Response) => {
+    await proizvodRepository.getPorudzbine()
+             .then(data => {
+                 response.send(data);
+                 })
+         .catch(err => {
+             response.status(500).send(err);
+                 })        
 }
+
+const getDrzava = async (request: Request, response:Response) => {
+    await proizvodRepository.getDrzava()
+             .then(data => {
+                 response.send(data);
+                 })
+         .catch(err => {
+             response.status(500).send(err);
+                 })        
+}
+
+const deleteProizvodId = async (request: Request, response:Response) => {
+    console.log(request.params)
+     proizvodRepository.deleteProizvodId(parseInt(request.params.pid))
+             .then(data => {
+                 response.send(data);
+                 })
+         .catch(err => {
+             response.status(500).send(err);
+                 })        
+}
+
+const getGrad = async (request: Request, response:Response) => {
+    await proizvodRepository.getGrad(parseInt(request.params.drzava_id))
+             .then(data => {
+                 response.send(data);
+                 })
+         .catch(err => {
+             response.status(500).send(err);
+                 })        
+}
+
+
+
          
 
-export default {postAddProduct, putIzmjeneProizvoda, getAllProizvodi, getlistaVelicine,getlistaTipovaProizvoda, getProizvodByID, getAllProizvodiSaTipom, getProizvodiSaZalihama }
+export default {postAddProduct, deleteProizvodId, getDrzava, getGrad, getPorudzbine, putIzmjeneProizvoda, getAllProizvodi, getlistaVelicine,getlistaTipovaProizvoda, getProizvodByID, getAllProizvodiSaTipom, getProizvodiSaZalihama }
+
+

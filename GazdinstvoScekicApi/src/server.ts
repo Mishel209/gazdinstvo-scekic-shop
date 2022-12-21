@@ -3,9 +3,11 @@ import { Application } from 'express';
 import { createConnection } from 'typeorm';
 import cors, {CorsOptions} from 'cors';
 import dbConfig from './common/db-config';
+import fileUploadRouter from './common/file-upload';
 
 // import routera 
 import proizvodRouter from './routing/proizvod-routing';
+import path from 'path';
 
 const app: Application = express(); 
 app.use(express.json());
@@ -17,6 +19,8 @@ const corsOption: CorsOptions = {
 app.use(cors(corsOption));
 
 app.use(proizvodRouter);
+app.use(fileUploadRouter);
+app.use(express.static(path.join(__dirname, './../public')));
 
 createConnection(dbConfig)
   .then(connection => {

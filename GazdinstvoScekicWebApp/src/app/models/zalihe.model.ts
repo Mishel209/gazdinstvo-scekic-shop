@@ -4,6 +4,8 @@ export class Zalihe {
     naziv_velicine : string;
     kolicina_zalihe : number;
     cijena : number;
+    proizvod_id : number;
+   
 
     constructor() {
         this.zalihe_id = 0;
@@ -11,5 +13,7 @@ export class Zalihe {
         this.naziv_velicine = "";
         this.kolicina_zalihe = 0;
         this.cijena = 0;
+        this.proizvod_id = 0;
+      
     }
 }

@@ -5,8 +5,15 @@
     top: 30%;
     left: 40%;
     z-index: 100;
-}
+};
 
 .position-relative {
     position: relative;
+};
+
+.modal-header{
+    background-color: rgba(51, 107, 148, 0.619);
+};
+.modal-body{
+    background-color: rgba(51, 107, 148, 0.619);
 }

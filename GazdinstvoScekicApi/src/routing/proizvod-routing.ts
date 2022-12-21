@@ -12,7 +12,7 @@ router.route('/proizvodiSaTipom')
 router.route('/proizvodi/:pid')
         .get(proizvodController.getProizvodByID)
 
- router.route('/proizvodiSaZalihama/:pid')
+ router.route('/proizvodiSaZalihama/:pid') // ovjde imas parametar
         .get(proizvodController.getProizvodiSaZalihama) 
 
  router.route('/listatipovaProizvoda')   
@@ -27,5 +27,16 @@ router.route('/sacuvajPromjene')
 router.route('/addProduct')
         .post(proizvodController.postAddProduct)
 
+router.route('/porudzbine')
+        .get(proizvodController.getPorudzbine)
+
+router.route('/proizvodId/:pid')   // ovjde nemas parametar, sad smo ga dodali.
+        .delete(proizvodController.deleteProizvodId)
+
+ router.route('/drzava')   
+        .get(proizvodController.getDrzava)
+
+ router.route('/grad/:drzava_id')   
+        .get(proizvodController.getGrad)
 
 export default router;

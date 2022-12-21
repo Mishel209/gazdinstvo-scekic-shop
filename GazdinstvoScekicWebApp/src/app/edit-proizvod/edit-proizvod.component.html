@@ -18,6 +18,7 @@
                                 <th scope="col">Naziv</th>
                                 <th scope="col">Opis</th>
                                 <th scope="col">Tip</th>
+                                <th scope="col">Slika</th>
                             </tr>
                             <tr>
                                 <td>{{proizvodSaZalihama.proizvod_id}}</td>
@@ -32,8 +33,16 @@
                                             [value]='tipProizvoda.id'>
                                             {{ tipProizvoda.naziv }}
                                         </option>
+                                        <td>
+                                            <input #imageInput
+                                            type="file"
+                                            class="file-input"
+                                            (change)="processFile($event)">
+                                        </td>
                                     </select>
-                                </td> 
+                                    
+                                </td>
+                                 
                             </tr>
 
                         </thead>
@@ -57,7 +66,7 @@
                         <tr *ngFor="let zaliha of proizvodSaZalihama.zalihe">
                             <td>{{ zaliha.naziv_velicine }}</td>
                             <td><input type="number" [(ngModel)]="zaliha.kolicina_zalihe" /></td>
-                            <td><input type="number" [(ngModel)]="zaliha.cijena" /></td>
+                            <td><input type="number" min="0.00" step="0.50" [(ngModel)]="zaliha.cijena" /></td>
                         </tr>
                     </tbody>
                 </table>

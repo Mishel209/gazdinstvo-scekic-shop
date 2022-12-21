@@ -12,21 +12,29 @@
                             <th scope="col">Naziv</th>
                             <th scope="col">Opis</th>
                             <th scope="col">Tip</th>
+                            <th scope="col">Dodaj sliku</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><input type="text" [(ngModel)]="proizvodSaZalihama.naziv" /></td>
                             <td><input type="text" [(ngModel)]="proizvodSaZalihama.opis" /></td>
-                            
-                            <select [(ngModel)]="proizvodSaZalihama.tip_proizvoda_id">
-                                <option value="0">Izaberi proizvod:</option>
-                                <!-- NAPOMENA2 Ispod stavi option sa ngFor-om box -->
-                                <option *ngFor="let tipProizvoda of listaTipovaProizvoda"
-                                    [value]='tipProizvoda.id'>
-                                    {{ tipProizvoda.naziv }}
-                                </option>
-                            </select>
+                            <td>
+                                <select [(ngModel)]="proizvodSaZalihama.tip_proizvoda_id">
+                                    <option value="0">Izaberi proizvod:</option>
+                                    <!-- NAPOMENA2 Ispod stavi option sa ngFor-om box -->
+                                    <option *ngFor="let tipProizvoda of listaTipovaProizvoda"
+                                        [value]='tipProizvoda.id'>
+                                        {{ tipProizvoda.naziv }}
+                                    </option>
+                                </select>
+                            </td>
+                            <td>
+                                <input #imageInput
+                                     type="file"
+                                     class="file-input"
+                                     (change)="processFile($event)"> 
+                            </td>
                         </tr>
                     </tbody>
                                 
@@ -60,7 +68,7 @@
                                 </td>
 
                                 <td>
-                                    <input type="number" min="0.00" step="0.05"  [(ngModel)]="zaliha.cijena"/>
+                                    <input type="number" min="0.00" step="0.05" [(ngModel)]="zaliha.cijena"/>
                                 </td>
 
                                 <td>

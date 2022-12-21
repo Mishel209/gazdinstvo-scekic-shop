@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { environment } from 'src/environments/environment';
 import { ProizvodSaZalihom } from '../models/proizvod-sa-zalihom.model';
 import { Zalihe } from '../models/zalihe.model';
 import { ProizvodService } from '../shared/services/proizvod.service';
@@ -19,7 +20,6 @@ export class AddProductComponent implements OnInit {
   showUpdateLoader: boolean = false;
   postAddProduct: any[];
 
-
   constructor(
     public activeModal: NgbActiveModal, 
     private proizvodService: ProizvodService ) { }
@@ -32,13 +32,7 @@ export class AddProductComponent implements OnInit {
     this.proizvodService.getlistaVelicine().subscribe(res=>{
       this.listaVelicine = res;
     }) 
-
-
-   
-
- 
-
-  }
+   }
 
   dodajZalihu() {
     let zaliha = new Zalihe();
@@ -66,5 +60,20 @@ this.proizvodSaZalihama.zalihe.splice(index, 1)
     })
   }
 
+  processFile(imageInput : any) {
+  
+    const file:File = imageInput.target.files[0];
 
+      this.proizvodService.uploadImage(file).subscribe(
+        (res) => {
+          console.log("Fajl uspjesno uploadovan");
+          this.proizvodSaZalihama.slikaNaziv = file.name;
+          console.log(res);
+        },
+        (err) => {
+          console.log("Fajl neuspjesno uploadovan");
+          console.log(err);
+        })
+
+  }
 }

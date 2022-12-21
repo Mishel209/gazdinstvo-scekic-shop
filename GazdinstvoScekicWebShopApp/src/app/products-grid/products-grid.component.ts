@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { MesssageService } from '../shared/services/message.service';
+import { ProizvodService } from '../shared/services/proizvod.service';
 
 @Component({
   selector: 'app-products-grid',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsGridComponent implements OnInit {
 
-  constructor() { }
+  proizvodi = [];
+  apiUrl = environment.apiUrl;
+  listaTipovaProizvoda: any[];
+  constructor(
+    private proizvodService : ProizvodService,
+    private messageService: MesssageService
+  ) { }
 
   ngOnInit(): void {
-  }
+    this.proizvodService.getAllProizvodiSaTipom().subscribe(res=>{
+      console.log ("ProductsGridComponent - Proizvodi: " + JSON.stringify(res));
+      this.proizvodi = res;
+    });
 
+    this.proizvodService.getlistaTipovaProizvoda().subscribe(res=>{
+      this.listaTipovaProizvoda = res;
+    }) 
+  }
+  
+  dodajUkorpu(proizvod: any) {
+    this.messageService.sendNewProductToBasket(proizvod);  
+  }
+  
 }

@@ -49,5 +49,21 @@ postAddProduct(body : ProizvodSaZalihom):  Observable<any[]> {
   return this.httpClient.post<any[]>("http://localhost:3000/addProduct",body);
 }
 
+getPorudzbine(): Observable<any[]> {
+  return this.httpClient.get<any[]>("http://localhost:3000/porudzbine");
+}
+
+deleteProizvodId(id : number): Observable<any[]> {
+  return this.httpClient.delete<any[]>(`http://localhost:3000/proizvodId/${id}`);
+}
+
+uploadImage(image: File): Observable<any> {
+  const formData = new FormData();
+
+  formData.append('img', image);
+
+  return this.httpClient.post('http://localhost:3000/upload', formData);
+}
+
 }
 

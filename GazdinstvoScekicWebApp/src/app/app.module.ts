@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+
 import { RouterModule } from '@angular/router';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
@@ -31,6 +32,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EditProizvodComponent } from './edit-proizvod/edit-proizvod.component'
 import { FormsModule } from '@angular/forms';
 import { AddProductComponent } from './add-product/add-product.component';
+import { PorudzbineComponent } from './porudzbine/porudzbine.component';
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import { AddProductComponent } from './add-product/add-product.component';
     PocetnaComponent,
     SidebarComponent,
     EditProizvodComponent,
-    AddProductComponent
+    AddProductComponent,
+    PorudzbineComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +57,7 @@ import { AddProductComponent } from './add-product/add-product.component';
     PerfectScrollbarModule,
     FontAwesomeModule,
     FormsModule
+   
   ],
   
   exports: [

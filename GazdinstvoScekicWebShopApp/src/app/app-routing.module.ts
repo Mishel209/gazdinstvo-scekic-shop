@@ -3,6 +3,7 @@ import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { PocetnaComponent } from './pocetna/pocetna.component';
 import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ProductsGridComponent } from './products-grid/products-grid.component';
+import { KorpaComponent } from './korpa/korpa.component';
 
 
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   },
   { path: '', component: ProductsGridComponent },
   { path: 'pocetna', component: ProductsGridComponent },
+  { path: 'korpa', component: KorpaComponent },
 
 ];
 

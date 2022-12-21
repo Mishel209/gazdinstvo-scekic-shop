@@ -27,6 +27,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarService } from './shared/services/sidebar/sidebar.service';
+import { ProizvodService } from './shared/services/proizvod.service';
+import { ProductsGridComponent } from './products-grid/products-grid.component';
+import { KorpaComponent } from './korpa/korpa.component';
+import { MesssageService } from './shared/services/message.service';
 
 
 
@@ -34,7 +38,9 @@ import { SidebarService } from './shared/services/sidebar/sidebar.service';
   declarations: [
     AppComponent,
     PocetnaComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProductsGridComponent,
+    KorpaComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +62,7 @@ import { SidebarService } from './shared/services/sidebar/sidebar.service';
   
   providers: [
     { provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG },
-   SidebarService
+   SidebarService, ProizvodService, MesssageService
   ],
   bootstrap: [AppComponent]
 })
